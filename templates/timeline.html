@@ -1,0 +1,11 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="">
+  <ul>
+    {% for chirp in chirps %}
+    <li>{{chirp.username}}--{{chirp.chirp}}--{{chirp.date}}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}
