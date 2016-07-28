@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class="">
+
+</div>
+<div class="chirp_list">
+  <ul class="media">
+    {% for chirp in user_chirps %}
+    <li class="chirps media-left"><img class="media-object profile_image" src="{{chirp.profile_image}}" alt=""><span class="user media-body">{{chirp.username}}</span><br>{{chirp.chirp}}<br>{{chirp.date.strftime('%m-%d-%Y')}}</li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

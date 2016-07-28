@@ -1,0 +1,15 @@
+.chirps {
+  margin: 5px;
+  background-color: lightgrey;
+}
+
+.user {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.profile_image {
+  height: 80px;
+  width: 80px;
+  padding: 5px;
+}

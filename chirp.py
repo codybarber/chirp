@@ -9,15 +9,24 @@ def home():
 
     query = db.query('''
         select
-            chirper.username,
-            chirps.chirp,
-            chirps.date
+	        chirper.username,
+        	chirper.profile_image,
+        	chirps.chirp,
+        	chirps.date
         from
-            chirper
+	        chirps
         left outer join
-            chirps on chirper.id = chirps.chirper_id
+	        chirper on chirps.chirper_id = chirper.id
+        where
+	        chirps.chirper_id = 1 or chirps.chirper_id in
+	            (select
+		            chirper_followed
+	            from
+		            follow
+	            where
+		            follow.chirper_id = 1)
         order by
-            chirps.date asc
+	        chirps.date asc
     ''')
 
     return render_template(
@@ -25,6 +34,28 @@ def home():
     title='Latest Tweets',
     chirps=query.namedresult())
 
+@app.route('/profile')
+def profile():
+    query = db.query('''
+        select
+            chirper.username,
+            chirper.profile_image,
+            chirps.chirp,
+            chirps.date
+        from
+            chirper
+        left outer join
+            chirps on chirper.id = chirps.chirper_id
+        where
+	       chirper.id = 1
+        order by
+	       chirps.date asc
+    ''')
+
+    return render_template(
+    'profile.html',
+    title='',
+    user_chirps=query.namedresult())
 
 
 if __name__ == '__main__':

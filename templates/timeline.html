@@ -1,9 +1,9 @@
 {% extends 'layout.html' %}
 {% block body %}
 <div class="">
-  <ul>
+  <ul style="list-style: none;" class="media-list">
     {% for chirp in chirps %}
-    <li>{{chirp.username}}--{{chirp.chirp}}--{{chirp.date}}</li>
+    <li class="chirps media"><img class="media-object profile_image" src="{{chirp.profile_image}}" alt=""><span class="user">{{chirp.username}}</span><br>{{chirp.chirp}}<br>{{chirp.date.strftime('%m-%d-%Y')}}</li>
     {% endfor %}
   </ul>
 </div>
