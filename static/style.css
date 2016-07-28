@@ -1,15 +1,31 @@
 .chirps {
   margin: 5px;
-  background-color: lightgrey;
 }
 
 .user {
   font-weight: bold;
   font-size: 1.2em;
+  font-family: 'Cabin', sans-serif;
 }
 
 .profile_image {
   height: 80px;
   width: 80px;
-  padding: 5px;
+  margin-right: 20px;
+  box-shadow: 4px 4px 4px grey;
+  border-radius: 4px;
+}
+
+.chirp {
+  font-size: 2em;
+  font-family: 'Cabin', sans-serif;
+}
+
+.time {
+  font-size: 1em;
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.chirp_input {
+  margin: 10px;
 }

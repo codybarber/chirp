@@ -1,11 +1,22 @@
 {% extends 'layout.html' %}
 {% block body %}
-<div class="">
-  <ul style="list-style: none;" class="media-list">
-    {% for chirp in chirps %}
-    <li class="chirps media"><img class="media-object profile_image" src="{{chirp.profile_image}}" alt=""><span class="user">{{chirp.username}}</span><br>{{chirp.chirp}}<br>{{chirp.date.strftime('%m-%d-%Y')}}</li>
-    {% endfor %}
-  </ul>
+<form class="chirp_input" action="/send_chirp" method="post">
+  <div class="col-lg-6">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="What's on your mind?" name="send">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Chirp!</button>
+      </span>
+    </div>
+  </div>
+</form>
+{% for chirp in chirps %}
+<div class="row">
+  <div class="col-md-12">
+    <div class="chirps well">
+      <img class="profile_image" src="{{chirp.profile_image}}" alt=""><p style="display: inline" class="user">@{{chirp.username}}</p><br><p class="text-center chirp">{{chirp.chirp}}</p><br><p class="time text-right text-muted">{{chirp.date.strftime('%m-%d-%Y')}}</p>
+    </div>
+  </div>
 </div>
-
+{% endfor %}
 {% endblock %}
