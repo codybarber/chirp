@@ -2,7 +2,21 @@ from flask import Flask, render_template, request, redirect, session
 import bcrypt
 import time
 import pg
-db = pg.DB(dbname='chirp_db')
+
+from dotenv import load_dotenv, find_dotenv
+import os
+
+load_dotenv(find_dotenv())
+db = pg.DB(
+    dbname=os.environ.get('DBNAME'),
+    host=os.environ.get('DBHOST'),
+    port=5432,
+    user=os.environ.get('DBUSER'),
+    passwd=os.environ.get('DBPASSWORD')
+)
+
+
+
 app = Flask('ChirpApp')
 app.debug = True
 
